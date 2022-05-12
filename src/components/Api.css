@@ -4,13 +4,19 @@
     overflow: auto;
 }
 .usuario, .producto {
-    margin: 70px 18px 50px 22px;
+    margin: 9px 9px 9px 9px;
     color: var(--text-color);
     overflow: auto;
 }
 .productos, .usuarios p{
     color: var(--text-color);
 }
+
+.productos, .usuarios a{
+    color: var(--text-color);
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -44,7 +50,7 @@
     border-collapse: collapse;
 }
 .card{
-    width: 18rem;
+    width: 11rem;
     position: relative;
     display: flex;
     flex-direction: column;

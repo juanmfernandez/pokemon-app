@@ -11,18 +11,6 @@ function Api(){
 
     const pokeImageHost = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
-    // useEffect(() => {
-    //     fetch(`https://pokeapi.co/api/v2/pokemon?offset=${pagina}&limit=20`)
-    //         .then(response => response.json())
-    //         .then(data =>{ 
-    //             setPokes( data.results );
-    //             setTotalPokes( data.count );
-    //             setNextPage( data.next );
-    //             setPrevPage( data.previous );
-    //         })
-    //         .catch(e => console.log("Error: " + e))        
-    // }, []);
-
     const getPokes = () => {
        fetch(`https://pokeapi.co/api/v2/pokemon?offset=${pagina*20}&limit=20`)
            .then(response => response.json())
@@ -83,20 +71,14 @@ function Api(){
                             return(
                                 <>
                                         <div className="usuario">
-                                            <div className="card">
-                                                <img src={pokeImageHost+img+'.png'} className="card-img-top" alt="" />
-                                                <ul className="list-group list-group-flush">
-                                                    <li className="list-group-item">{poke.name}</li>
-                                                </ul>
-                                                <div className="card-body">
-                                                    <h5 className="card-title">{poke.name}</h5>
+                                            <Link to={`${poke.url}`}>
+                                                <div className="card">
+                                                    <img src={pokeImageHost+img+'.png'} className="card-img-top" alt="" />
+                                                    <ul className="list-group list-group-flush">
+                                                        <li className="list-group-item">{poke.name}</li>
+                                                    </ul>
                                                 </div>
-                                                <div className="card-body">
-                                                <Link to={`/user/${poke.url}`}>
-                                                    <BiUser className="icon"/>
-                                                </Link> 
-                                                </div>
-                                            </div>
+                                            </Link> 
                                         </div>
                                         </>
                             )

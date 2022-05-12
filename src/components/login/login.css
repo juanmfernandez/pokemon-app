@@ -1,0 +1,37 @@
+.Login {
+  display: flex;
+  height: 100vh;
+  background-color: #2148C0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+  
+  .LoginHeroContainer {
+    flex: 1;
+    background-color: #2C73EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .LoginFormContainer {
+    flex: 1 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-bottom: 15px;
+  }
+
+  .logOut{
+    background-color: rgb(224, 102, 20);
+    text-decoration: none;
+    width: 150px;
+    text-align: center;
+    border: 2px solid beige;
+    color: black;
+  }

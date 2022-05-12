@@ -3,27 +3,29 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import './App.css';
 import './Sidebar.css';
-import './components/Api.css';
+import './components/list.css';
 
 import Sidebar from './components/Sidebar';
 import NotFound from './components/NotFound';
-import Api from './components/Api';
-import Product from './components/Product';
-import Productos from './components/Productos';
-import User from "./components/User";
-
+import List from './components/List';
+import View from "./components/View";
+import { Login } from "./components/login/Login";
+import  Provider  from './components/providers';
 
 function App() {
+
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Sidebar />}>
-        <Route index element={ <Api /> } />
-        <Route path="user/:id" element={<User />} />
-        <Route path="product/:id" element={<Product />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+      <Provider >
+        <Routes>
+          <Route path="/" element={<Sidebar />}>
+            <Route index element={  <List />  } />
+            <Route path="login" element={<Login />} />
+            <Route path="pokemon/:id" element={<View />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>      
+      </Provider>
   </BrowserRouter>
   );
 }

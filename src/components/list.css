@@ -7,6 +7,13 @@
     margin: 9px 9px 9px 9px;
     color: var(--text-color);
     overflow: auto;
+    margin-top: 78px;
+}
+
+.poke {
+    margin: 9px 9px 9px 9px;
+    color: var(--text-color);
+    overflow: auto;
 }
 .productos, .usuarios p{
     color: var(--text-color);
@@ -37,10 +44,13 @@
     align-content: space-between;
 }
 
-.table-responsive {
+.container-responsive {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
 }
 .table {
     width: 100%;
@@ -50,7 +60,20 @@
     border-collapse: collapse;
 }
 .card{
-    width: 11rem;
+    width: 12rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.poke-card{
+    width: 20rem;
     position: relative;
     display: flex;
     flex-direction: column;

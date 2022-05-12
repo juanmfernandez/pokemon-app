@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
 
-function Api(){
+function List(){
     const [pokes, setPokes] = useState([]);
     const [totalPokes, setTotalPokes] = useState([]);
     const [nextPage, setNextPage] = useState(0);
@@ -59,23 +59,23 @@ function Api(){
                     {prevPage != null  &&
                         <button onClick={ restPage }> Prev </button>
                     }
-                    <p> Página {nextPage} de {totalPokes} </p>
+                    <p> Página {pagina+1} de {Math.ceil(totalPokes/20)} </p>
                     {nextPage  &&
                         <button onClick={  addPage }> Next </button>
                     }                    
                 </div>
-                <div className="table-responsive">
+                <div className="container-responsive">
                     {
                         pokes.map((poke, i) => {
                             const img = pagina*20 + (i+1);
                             return(
                                 <>
-                                        <div className="usuario">
-                                            <Link to={`${poke.url}`}>
+                                        <div className="poke">
+                                            <Link to={`/pokemon/${img}`}>
                                                 <div className="card">
                                                     <img src={pokeImageHost+img+'.png'} className="card-img-top" alt="" />
                                                     <ul className="list-group list-group-flush">
-                                                        <li className="list-group-item">{poke.name}</li>
+                                                        <li className="list-group-item">{poke.name}   #{img}</li> 
                                                     </ul>
                                                 </div>
                                             </Link> 
@@ -90,4 +90,4 @@ function Api(){
     )
 }
 
-export default Api;
+export default List;

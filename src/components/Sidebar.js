@@ -1,19 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { AppContext } from './providers';
 import { Outlet, Routes, Route, Link } from "react-router-dom";
-import Api from './Api';
-
 import { 
-    BiSearch, 
     BiChevronRight, 
     BiHome, 
-    BiBarChartAlt2, BiPieChartAlt, BiHeart, BiWallet, BiLogOut, BiMoon, BiSun } from "react-icons/bi";
-import Productos from "./Productos";
-import Product from "./Product";
-
+    BiLogIn, BiPieChartAlt, BiHeart, BiWallet, BiLogOut, BiMoon, BiSun } from "react-icons/bi";
 
 function Sidebar(){
-
     const [menuCollapse, setMenuCollapse] = useState(false)
+    const [stateLogged, setStateLogged] = useContext(AppContext);
+
     const menuIconClick = () => {
         menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
     };
@@ -22,7 +18,7 @@ function Sidebar(){
     const toggle = useRef();
     const modeSwitch = useRef();
     const modeText = useRef();
-
+    
     const toggleClose = () => {
         sidebar.current.classList.toggle("close");
     }
@@ -65,9 +61,9 @@ function Sidebar(){
                             </li>
 
                             <li className="nav-link">
-                                <Link to="/estadisticas">
-                                    <BiBarChartAlt2 className="icon"/>
-                                    <span className="text nav-text"> Estadísticas</span>
+                                <Link to="/login">
+                                    <BiLogIn className="icon"/>
+                                    <span className="text nav-text"> Login</span>
                                 </Link>
                             </li>
 
@@ -113,7 +109,7 @@ function Sidebar(){
             </nav>
 
             <section className="home">
-                <div className="text">PokeDashboard</div>
+                <div className="text">PokeDashboard {stateLogged.isLogged}</div>
                 <div className="container">
                     <Outlet />
                 </div>

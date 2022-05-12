@@ -1,13 +1,30 @@
+import * as React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
 import './App.css';
+import './Sidebar.css';
+import './components/Api.css';
+
+import Sidebar from './components/Sidebar';
+import NotFound from './components/NotFound';
+import Api from './components/Api';
+import Product from './components/Product';
+import Productos from './components/Productos';
+import User from "./components/User";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>POKEMON-APP</h1>
-          <h2>Bootcamp by Devlights </h2>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Sidebar />}>
+        <Route index element={ <Api /> } />
+        <Route path="user/:id" element={<User />} />
+        <Route path="product/:id" element={<Product />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
   );
 }
 

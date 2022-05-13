@@ -31,7 +31,6 @@ function Sidebar(){
             modeText.current.innerText = "Dark mode";
         }
     }
-    
     return(
         <>
         <main className="body" ref={body}>
@@ -69,12 +68,12 @@ function Sidebar(){
                     </div>
 
                     <div className="bottom-content">
+                        <div onClick={()=>stateLogged.logOut.logOut()}>
                             <li className="nav-link">
-                                <Link to="/login">
-                                    <BiLogOut className="icon"/>
-                                    <span className="text nav-text"> Log Out</span>
-                                </Link>
+                                    <BiLogOut className="icon" />
+                                    <span className="text nav-text"> Log Out ¿?</span>
                             </li>
+                        </div>
                         <li className="mode">
                             <div className="sun-moon">
                                 <BiMoon className="icon moon"/>

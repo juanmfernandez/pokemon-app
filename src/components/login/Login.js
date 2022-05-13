@@ -5,6 +5,7 @@ import {useContext} from 'react';
 import {AppContext} from '../providers';
 
 import "./login.css";
+import List from "../List";
 
 export function Login(){
     const [isLogged, setIsLogged] = useState(window.localStorage.getItem("isLogged"));
@@ -15,6 +16,7 @@ export function Login(){
     function onSuccess(){
         setIsLogged("true");
         setState({ ...state, isLogged:"true"});
+        setState({ ...state, logOut:{logOut}});
         setNameLogged(window.localStorage.getItem("email"));
         setTypeLogged(window.localStorage.getItem("type"));
     }
@@ -24,16 +26,15 @@ export function Login(){
         setState({ ...state, isLogged:"false"});
     }
 
-    console.log("Login => ",isLogged);
-
     return (
         <>
             {
                 isLogged === "true" ? 
                     <>
-                        <LoginFormSuccess name={nameLogged} type={typeLogged} logOut={logOut} />
+                        <List />
                     </>  
-                    : <LoginForm onSuccess={onSuccess} />
+                    : 
+                    <LoginForm onSuccess={onSuccess} />
             }
         </>
     )

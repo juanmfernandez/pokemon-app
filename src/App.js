@@ -13,14 +13,14 @@ import { Login } from "./components/login/Login";
 import  Provider  from './components/providers';
 
 function App() {
-
+  const isLogged = window.localStorage.getItem("isLogged");
   return (
     <BrowserRouter>
-      <Provider>
+      <Provider value={ isLogged }>
         <Routes>
           <Route path="/" element={ <Sidebar /> }>
-            <Route index element={ <List /> } />
-            <Route path="login" element={<Login />} />
+            <Route index element={  isLogged === "true" ?  <List /> : <Login /> } />
+            <Route path="login" element={isLogged === "true" ?  <List /> : <Login />} />
             <Route path="pokemon/:id" element={<View />} />
             <Route path="*" element={<NotFound />} />
           </Route>

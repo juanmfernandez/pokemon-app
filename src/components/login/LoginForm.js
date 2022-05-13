@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./loginForm.css";
 
@@ -7,6 +8,7 @@ export function LoginForm({ onSuccess }) {
     const [password, setPassword] = useState('');
     const [type, setType] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
   
     function handleClick() {
       if (email === "test@test.com") {
@@ -15,7 +17,8 @@ export function LoginForm({ onSuccess }) {
             window.localStorage.setItem("isLogged", true);
             window.localStorage.setItem("type", type);
             window.localStorage.setItem("email", email);
-            onSuccess();  
+            onSuccess()
+            navigate(`/`);
             return ;
         }
       }

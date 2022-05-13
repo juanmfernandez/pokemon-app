@@ -16,10 +16,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Provider >
+      <Provider>
         <Routes>
-          <Route path="/" element={<Sidebar />}>
-            <Route index element={  <List />  } />
+          <Route path="/" element={ <Sidebar /> }>
+            <Route index element={ <List /> } />
             <Route path="login" element={<Login />} />
             <Route path="pokemon/:id" element={<View />} />
             <Route path="*" element={<NotFound />} />

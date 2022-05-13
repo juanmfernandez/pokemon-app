@@ -20,13 +20,22 @@ export function Login(){
     }
     function logOut(){
         setIsLogged("false"); 
-        setState({ ...state, isLogged:"true"});
+        window.localStorage.setItem("isLogged", false);
+        setState({ ...state, isLogged:"false"});
     }
 
-    console.log(isLogged);
+    console.log("Login => ",isLogged);
+
     return (
-        <main className="Login">          
-            {isLogged === "true" ? <><LoginFormSuccess name={nameLogged} type={typeLogged} /><br></br><a className="logOut" href="#" onClick={logOut}>Salir</a></>  : <LoginForm onSuccess={onSuccess} />}
-        </main>
+        <>
+            {
+                isLogged === "true" ? 
+                    <>
+                        <LoginFormSuccess name={nameLogged} type={typeLogged} />
+                        <a className="card" href="#" onClick={logOut}>Salir</a>
+                    </>  
+                    : <LoginForm onSuccess={onSuccess} />
+            }
+        </>
     )
 }

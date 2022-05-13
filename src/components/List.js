@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import { BiUser } from "react-icons/bi";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { AppContext } from './providers';
 
 function List(){
     const [pokes, setPokes] = useState([]);
@@ -8,6 +8,8 @@ function List(){
     const [nextPage, setNextPage] = useState(0);
     const [prevPage, setPrevPage] = useState(0);
     const [pagina, setPagina] = useState(0);
+
+    const [state, setState] = useContext(AppContext);
 
     const pokeImageHost = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 
@@ -24,7 +26,8 @@ function List(){
     }
 
     useEffect(() => {
-        getPokes()
+        getPokes();
+        setState({ ...state, iconPoke: pokeImageHost+(((pagina > 0 ? pagina : 1)*20)+(Math.floor(Math.random() * (20 - 1)) + 1))+'.png' });
     },[pagina])
 
     useEffect(() => {
@@ -38,19 +41,6 @@ function List(){
         setPagina(pagina - 1)
     }
 
-    function loadPrevOrNext(prevPage) {
-        return () => {
-            fetch(`${prevPage}`)
-                .then(response => response.json())
-                .then(data =>{ 
-                    setPokes( data.results );
-                    setTotalPokes( data.count );
-                    setNextPage( data.next );
-                    setPrevPage( data.previous );
-                })
-                .catch(e => console.log("Error: " + e))         
-        }
-    }
     return(
         <>
             <div className="usuarios">

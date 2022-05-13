@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { BiEdit, BiTrash } from "react-icons/bi";
+import { AppContext } from './providers';
 
 function View(){
     const params = useParams();
     const [poke, setPoke] = useState([]);
     const pokeImageHost = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
+
+    const [state, setState] = useContext(AppContext);
+
     useEffect(() => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`)
             .then(response => response.json())
             .then(data =>{ 
                 setPoke( data );
                 console.log("data: " + JSON.stringify(data.forms))
+                setState({ ...state, iconPoke: pokeImageHost+data.id+'.png' });
             })
             .catch(e => console.log("Error: " + e))
     }, []);
@@ -27,7 +31,7 @@ function View(){
     if (poke.forms === undefined) {
         return(
             <div className="usuario">
-                <h1>Loading {JSON.stringify(params.id)}</h1>    
+                <h1>Loading pokemon {params.id}</h1>    
             </div>            
         )
     }
@@ -38,7 +42,7 @@ function View(){
         <>
             <div className="usuario">
                 <div className="poke-card">
-                    <img src={pokeImageHost+poke.id+'.png'} className="card-img-top" alt="" />
+                    <img src={state.iconPoke} className="card-img-top" alt="" />
                     <div className="card-body">
                         <h3 className="card-title">{firstCapLetter(poke.name)}</h3>
                     </div>

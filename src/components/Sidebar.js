@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { AppContext } from './providers';
-import { Outlet, Routes, Route, Link } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { 
     BiChevronRight, 
     BiHome, 
-    BiLogIn, BiPieChartAlt, BiHeart, BiWallet, BiLogOut, BiMoon, BiSun } from "react-icons/bi";
+    BiLogIn, BiLogOut, BiMoon, BiSun } from "react-icons/bi";
 
 function Sidebar(){
     const [menuCollapse, setMenuCollapse] = useState(false)
@@ -39,7 +39,7 @@ function Sidebar(){
                 <header>
                     <div className="image-text" onClick={toggleClose}>
                         <span className="image">
-                            <img src="logo_ishoes.png" alt="BigCo Inc. logo"/>
+                            <img src={ stateLogged.iconPoke != undefined ? stateLogged.iconPoke : "pokeball.png"} alt="Poke"/>
                         </span>
                         <div className="text logo-text">
                             <span className="name">Pokemones</span>
@@ -59,39 +59,22 @@ function Sidebar(){
                                     <span className="text nav-text"> Home</span>
                                 </Link>
                             </li>
-
                             <li className="nav-link">
                                 <Link to="/login">
                                     <BiLogIn className="icon"/>
                                     <span className="text nav-text"> Login</span>
                                 </Link>
                             </li>
-
-                            <li className="nav-link">
-                                <Link to="/last-product">
-                                    <BiPieChartAlt className="icon"/>
-                                    <span className="text nav-text"> Producto</span>
-                                </Link>
-                            </li>
-
-                            <li className="nav-link">
-                                <Link to="/favoritos">
-                                    <BiHeart className="icon"/>
-                                    <span className="text nav-text"> Favoritos</span>
-                                </Link>
-                            </li>
-
-                            <li className="nav-link">
-                                <Link to="/ventas">
-                                    <BiWallet className="icon"/>
-                                    <span className="text nav-text">Ventas</span>
-                                </Link>
-                            </li>
-
                         </ul>
                     </div>
 
                     <div className="bottom-content">
+                            <li className="nav-link">
+                                <Link to="/login">
+                                    <BiLogOut className="icon"/>
+                                    <span className="text nav-text"> Log Out</span>
+                                </Link>
+                            </li>
                         <li className="mode">
                             <div className="sun-moon">
                                 <BiMoon className="icon moon"/>

@@ -92,7 +92,7 @@ function Sidebar(){
             </nav>
 
             <section className="home">
-                <div className="text">PokeDashboard {stateLogged.isLogged}</div>
+                <div className="text">PokeDashboard {/*stateLogged.isLogged*/}</div>
                 <div className="container">
                     <Outlet />
                 </div>

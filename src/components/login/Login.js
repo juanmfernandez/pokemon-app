@@ -31,8 +31,7 @@ export function Login(){
             {
                 isLogged === "true" ? 
                     <>
-                        <LoginFormSuccess name={nameLogged} type={typeLogged} />
-                        <a className="card" href="#" onClick={logOut}>Salir</a>
+                        <LoginFormSuccess name={nameLogged} type={typeLogged} logOut={logOut} />
                     </>  
                     : <LoginForm onSuccess={onSuccess} />
             }

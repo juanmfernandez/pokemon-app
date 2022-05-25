@@ -27,7 +27,7 @@ function List(){
 
     useEffect(() => {
         getPokes();
-        setState({ ...state, iconPoke: pokeImageHost+(((pagina > 0 ? pagina : 1)*20)+(Math.floor(Math.random() * (20 - 1)) + 1))+'.png' });
+        setState({ ...state, iconPoke: pokeImageHost+(((pagina)*20)+(Math.floor(Math.random() * (20 - 1)) + 1))+'.png' });
     },[pagina])
 
     useEffect(() => {
